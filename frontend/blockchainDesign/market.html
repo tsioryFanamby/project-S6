@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoFlow - Markets</title>
+    <!-- Use the Inter font from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS from CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b0c10;
+            color: #e5e7eb;
+        }
+        .text-gradient {
+            background-image: linear-gradient(to right, #4a90e2, #2464b9);
+            /* -webkit-background-clip: text; */
+            -webkit-text-fill-color: transparent;
+        }
+        .btn-gradient {
+            background-image: linear-gradient(to right, #4a90e2, #2464b9);
+            transition: transform 0.2s;
+        }
+        .btn-gradient:hover {
+            transform: translateY(-2px);
+        }
+        /* Style for the table's scrollbar */
+        .table-scroll-container::-webkit-scrollbar {
+            height: 8px;
+            width: 8px;
+        }
+        .table-scroll-container::-webkit-scrollbar-thumb {
+            background-color: #4a5568;
+            border-radius: 4px;
+        }
+        .table-scroll-container::-webkit-scrollbar-track {
+            background-color: #1a202c;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- Header & Navigation -->
+    <header class="bg-[#0b0c10] bg-opacity-80 backdrop-blur-sm fixed top-0 w-full z-50 py-4 px-6 md:px-12">
+        <nav class="flex justify-between items-center max-w-7xl mx-auto">
+            <div class="flex items-center space-x-2">
+                <svg class="h-8 w-8 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                <span class="text-xl font-bold text-white">CryptoFlow</span>
+            </div>
+            <div class="hidden md:flex space-x-8 text-gray-300 font-medium">
+                <a href="./trade.html" class="hover:text-blue-400 transition-colors">Trade</a>
+                <a href="./market.html" class="hover:text-blue-400 transition-colors text-blue-400 font-bold">Markets</a>
+                <a href="./portfolio.html" class="hover:text-blue-400 transition-colors">Portfolio</a>
+                <a href="./analytic.html" class="hover:text-blue-400 transition-colors">Analytics</a>
+            </div>
+            <button class="flex items-center space-x-2 px-4 py-2 bg-gray-800 text-blue-400 border border-blue-400 rounded-full font-semibold hover:bg-gray-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 12V6.5a2.5 2.5 0 10-5 0v5.5H7.5a2.5 2.5 0 100 5H12v2.5a2.5 2.5 0 105 0V17" />
+                </svg>
+                <span>Connect Wallet</span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Main Markets Content -->
+    <main class="flex-1 pt-24 pb-8 px-4 md:px-8 lg:px-12 max-w-7xl mx-auto w-full">
+        <h1 class="text-3xl md:text-4xl font-bold text-white mb-6">Market Overview</h1>
+        
+        <!-- Search and Filter Bar -->
+        <div class="flex flex-col sm:flex-row items-center justify-between mb-6 space-y-4 sm:space-y-0 sm:space-x-4">
+            <div class="relative w-full sm:w-64">
+                <input type="text" placeholder="Search markets..." class="w-full bg-gray-800 text-white rounded-lg px-4 py-2 pl-10 border border-gray-700 focus:outline-none focus:border-blue-500">
+                <svg class="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span class="text-gray-400 text-sm font-medium">Sort by:</span>
+                <select class="bg-gray-800 text-white rounded-lg px-3 py-2 border border-gray-700 focus:outline-none focus:border-blue-500">
+                    <option>Rank</option>
+                    <option>Price</option>
+                    <option>24h Change</option>
+                    <option>Volume</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Cryptocurrency Table -->
+        <div class="bg-[#1a1b1e] rounded-xl border border-gray-700 shadow-xl overflow-x-auto table-scroll-container">
+            <table class="w-full text-left text-gray-400 text-sm">
+                <thead class="uppercase bg-gray-800 text-gray-400 sticky top-0">
+                    <tr>
+                        <th class="px-6 py-3 rounded-tl-xl">#</th>
+                        <th class="px-6 py-3">Name</th>
+                        <th class="px-6 py-3 text-right">Price</th>
+                        <th class="px-6 py-3 text-right">24h Change</th>
+                        <th class="px-6 py-3 hidden md:table-cell text-right">24h Volume</th>
+                        <th class="px-6 py-3 hidden lg:table-cell text-right">Market Cap</th>
+                        <th class="px-6 py-3 hidden xl:table-cell text-center">Chart (7d)</th>
+                        <th class="px-6 py-3 rounded-tr-xl">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Example Table Row 1 (Positive Change) -->
+                    <tr class="border-b border-gray-700 hover:bg-gray-800 transition-colors cursor-pointer">
+                        <td class="px-6 py-4 font-semibold text-white">1</td>
+                        <td class="px-6 py-4 flex items-center">
+                            <img src="https://placehold.co/24x24/4a90e2/ffffff?text=B" alt="Bitcoin icon" class="w-6 h-6 mr-3">
+                            <div>
+                                <div class="text-white font-semibold">Bitcoin</div>
+                                <div class="text-gray-500">BTC</div>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 text-right text-white font-semibold">$67,240.35</td>
+                        <td class="px-6 py-4 text-right text-green-400 font-semibold">+2.4%</td>
+                        <td class="px-6 py-4 hidden md:table-cell text-right text-gray-300">$3.2B</td>
+                        <td class="px-6 py-4 hidden lg:table-cell text-right text-gray-300">$1.3T</td>
+                        <td class="px-6 py-4 hidden xl:table-cell">
+                             <!-- Placeholder for sparkline chart (SVG) -->
+                            <svg viewBox="0 0 100 20" preserveAspectRatio="none" class="w-24 h-5">
+                                <polyline fill="none" stroke="#48BB78" stroke-width="2" points="0,15 10,12 20,13 30,10 40,8 50,7 60,6 70,5 80,4 90,3 100,2" />
+                            </svg>
+                        </td>
+                        <td class="px-6 py-4">
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-3 py-1 rounded-full transition-colors">Trade</button>
+                        </td>
+                    </tr>
+                    <!-- Example Table Row 2 (Negative Change) -->
+                    <tr class="border-b border-gray-700 hover:bg-gray-800 transition-colors cursor-pointer">
+                        <td class="px-6 py-4 font-semibold text-white">2</td>
+                        <td class="px-6 py-4 flex items-center">
+                            <img src="https://placehold.co/24x24/5b8a92/ffffff?text=E" alt="Ethereum icon" class="w-6 h-6 mr-3">
+                            <div>
+                                <div class="text-white font-semibold">Ethereum</div>
+                                <div class="text-gray-500">ETH</div>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 text-right text-white font-semibold">$3,357.24</td>
+                        <td class="px-6 py-4 text-right text-red-400 font-semibold">-1.2%</td>
+                        <td class="px-6 py-4 hidden md:table-cell text-right text-gray-300">$1.8B</td>
+                        <td class="px-6 py-4 hidden lg:table-cell text-right text-gray-300">$405B</td>
+                         <td class="px-6 py-4 hidden xl:table-cell">
+                             <!-- Placeholder for sparkline chart (SVG) -->
+                            <svg viewBox="0 0 100 20" preserveAspectRatio="none" class="w-24 h-5">
+                                <polyline fill="none" stroke="#F56565" stroke-width="2" points="0,5 10,8 20,6 30,7 40,9 50,11 60,13 70,15 80,16 90,18 100,19" />
+                            </svg>
+                        </td>
+                        <td class="px-6 py-4">
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-3 py-1 rounded-full transition-colors">Trade</button>
+                        </td>
+                    </tr>
+                    <!-- More example rows... -->
+                    <tr class="border-b border-gray-700 hover:bg-gray-800 transition-colors cursor-pointer">
+                        <td class="px-6 py-4 font-semibold text-white">3</td>
+                        <td class="px-6 py-4 flex items-center">
+                            <img src="https://placehold.co/24x24/f6ad55/ffffff?text=C" alt="Cardano icon" class="w-6 h-6 mr-3">
+                            <div>
+                                <div class="text-white font-semibold">Cardano</div>
+                                <div class="text-gray-500">ADA</div>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 text-right text-white font-semibold">$0.45</td>
+                        <td class="px-6 py-4 text-right text-green-400 font-semibold">+0.8%</td>
+                        <td class="px-6 py-4 hidden md:table-cell text-right text-gray-300">$150M</td>
+                        <td class="px-6 py-4 hidden lg:table-cell text-right text-gray-300">$16B</td>
+                         <td class="px-6 py-4 hidden xl:table-cell">
+                             <!-- Placeholder for sparkline chart (SVG) -->
+                            <svg viewBox="0 0 100 20" preserveAspectRatio="none" class="w-24 h-5">
+                                <polyline fill="none" stroke="#48BB78" stroke-width="2" points="0,15 10,13 20,14 30,12 40,11 50,10 60,9 70,8 80,7 90,6 100,5" />
+                            </svg>
+                        </td>
+                        <td class="px-6 py-4">
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-3 py-1 rounded-full transition-colors">Trade</button>
+                        </td>
+                    </tr>
+                    <tr class="border-b border-gray-700 hover:bg-gray-800 transition-colors cursor-pointer">
+                        <td class="px-6 py-4 font-semibold text-white">4</td>
+                        <td class="px-6 py-4 flex items-center">
+                            <img src="https://placehold.co/24x24/9f7aea/ffffff?text=S" alt="Solana icon" class="w-6 h-6 mr-3">
+                            <div>
+                                <div class="text-white font-semibold">Solana</div>
+                                <div class="text-gray-500">SOL</div>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 text-right text-white font-semibold">$145.72</td>
+                        <td class="px-6 py-4 text-right text-red-400 font-semibold">-2.1%</td>
+                        <td class="px-6 py-4 hidden md:table-cell text-right text-gray-300">$850M</td>
+                        <td class="px-6 py-4 hidden lg:table-cell text-right text-gray-300">$66B</td>
+                         <td class="px-6 py-4 hidden xl:table-cell">
+                             <!-- Placeholder for sparkline chart (SVG) -->
+                            <svg viewBox="0 0 100 20" preserveAspectRatio="none" class="w-24 h-5">
+                                <polyline fill="none" stroke="#F56565" stroke-width="2" points="0,5 10,6 20,8 30,10 40,12 50,14 60,16 70,15 80,14 90,12 100,10" />
+                            </svg>
+                        </td>
+                        <td class="px-6 py-4">
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-3 py-1 rounded-full transition-colors">Trade</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#0b0c10] py-12 px-6 md:px-12 text-center">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col items-center mb-4">
+                <div class="flex items-center space-x-2 mb-2">
+                    <svg class="h-8 w-8 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                    <span class="text-2xl font-bold text-white">CryptoFlow</span>
+                </div>
+                <p class="text-gray-400">The future of decentralized trading</p>
+            </div>
+            <div class="flex flex-wrap justify-center space-x-4 md:space-x-8 text-gray-500">
+                <a href="#" class="hover:text-white transition-colors">Terms</a>
+                <a href="#" class="hover:text-white transition-colors">Privacy</a>
+                <a href="#" class="hover:text-white transition-colors">Support</a>
+                <a href="#" class="hover:text-white transition-colors">API</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

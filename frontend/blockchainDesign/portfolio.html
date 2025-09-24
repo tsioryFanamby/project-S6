@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoFlow - Portfolio</title>
+    <!-- Use the Inter font from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS from CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b0c10;
+            color: #e5e7eb;
+        }
+        .text-gradient {
+            background-image: linear-gradient(to right, #4a90e2, #2464b9);
+            /* -webkit-background-clip: text; */
+            -webkit-text-fill-color: transparent;
+        }
+        .btn-gradient {
+            background-image: linear-gradient(to right, #4a90e2, #2464b9);
+            transition: transform 0.2s;
+        }
+        .btn-gradient:hover {
+            transform: translateY(-2px);
+        }
+        .scroll-container::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        .scroll-container::-webkit-scrollbar-thumb {
+            background-color: #4a5568;
+            border-radius: 4px;
+        }
+        .scroll-container::-webkit-scrollbar-track {
+            background-color: #1a202c;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- Header & Navigation -->
+    <header class="bg-[#0b0c10] bg-opacity-80 backdrop-blur-sm fixed top-0 w-full z-50 py-4 px-6 md:px-12">
+        <nav class="flex justify-between items-center max-w-7xl mx-auto">
+            <div class="flex items-center space-x-2">
+                <svg class="h-8 w-8 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                <span class="text-xl font-bold text-white">CryptoFlow</span>
+            </div>
+            <div class="hidden md:flex space-x-8 text-gray-300 font-medium">
+                <a href="./trade.html" class="hover:text-blue-400 transition-colors">Trade</a>
+                <a href="./market.html" class="hover:text-blue-400 transition-colors">Markets</a>
+                <a href="./portfolio.html" class="hover:text-blue-400 transition-colors text-blue-400 font-bold">Portfolio</a>
+                <a href="./analytic.html" class="hover:text-blue-400 transition-colors">Analytics</a>
+            </div>
+            <button class="flex items-center space-x-2 px-4 py-2 bg-gray-800 text-blue-400 border border-blue-400 rounded-full font-semibold hover:bg-gray-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 12V6.5a2.5 2.5 0 10-5 0v5.5H7.5a2.5 2.5 0 100 5H12v2.5a2.5 2.5 0 105 0V17" />
+                </svg>
+                <span>Connect Wallet</span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Main Portfolio Content -->
+    <main class="flex-1 pt-24 pb-8 px-4 md:px-8 lg:px-12 max-w-7xl mx-auto w-full">
+        <h1 class="text-3xl md:text-4xl font-bold text-white mb-6">My Portfolio</h1>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+            <!-- Portfolio Summary Card -->
+            <div class="lg:col-span-2 bg-[#1a1b1e] rounded-xl p-6 border border-gray-700 shadow-lg">
+                <div class="flex items-center justify-between mb-4">
+                    <div>
+                        <div class="text-gray-400 text-sm mb-1">Total Portfolio Value</div>
+                        <div class="text-4xl font-bold text-white">$45,210.78</div>
+                    </div>
+                    <div class="text-green-400 font-semibold text-xl">+1.25% (24h)</div>
+                </div>
+                
+                <!-- Placeholder for the Portfolio Chart -->
+                <div class="bg-gray-800 rounded-lg w-full h-80 flex items-center justify-center">
+                    <p class="text-gray-500 text-lg">Portfolio Performance Chart Placeholder</p>
+                </div>
+            </div>
+
+            <!-- Asset Breakdown Card -->
+            <div class="lg:col-span-1 bg-[#1a1b1e] rounded-xl p-6 border border-gray-700 shadow-lg flex flex-col">
+                <h3 class="text-xl font-bold text-white mb-4">Your Assets</h3>
+                <div class="flex-1 space-y-4 scroll-container overflow-y-auto">
+                    <!-- Example Asset 1 -->
+                    <div class="flex items-center justify-between bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors">
+                        <div class="flex items-center space-x-3">
+                            <img src="https://placehold.co/32x32/4a90e2/ffffff?text=B" alt="Bitcoin icon" class="w-8 h-8 rounded-full">
+                            <div>
+                                <div class="text-white font-semibold">Bitcoin</div>
+                                <div class="text-gray-500 text-sm">BTC</div>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-white font-semibold">0.54 BTC</div>
+                            <div class="text-gray-500 text-sm">$36,309.84</div>
+                        </div>
+                    </div>
+                    <!-- Example Asset 2 -->
+                    <div class="flex items-center justify-between bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors">
+                        <div class="flex items-center space-x-3">
+                            <img src="https://placehold.co/32x32/5b8a92/ffffff?text=E" alt="Ethereum icon" class="w-8 h-8 rounded-full">
+                            <div>
+                                <div class="text-white font-semibold">Ethereum</div>
+                                <div class="text-gray-500 text-sm">ETH</div>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-white font-semibold">2.10 ETH</div>
+                            <div class="text-gray-500 text-sm">$7,040.22</div>
+                        </div>
+                    </div>
+                    <!-- Example Asset 3 -->
+                    <div class="flex items-center justify-between bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors">
+                        <div class="flex items-center space-x-3">
+                            <img src="https://placehold.co/32x32/f6ad55/ffffff?text=A" alt="Cardano icon" class="w-8 h-8 rounded-full">
+                            <div>
+                                <div class="text-white font-semibold">Cardano</div>
+                                <div class="text-gray-500 text-sm">ADA</div>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-white font-semibold">1,250 ADA</div>
+                            <div class="text-gray-500 text-sm">$562.50</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Transactions Table -->
+        <div class="mt-6 bg-[#1a1b1e] rounded-xl p-6 border border-gray-700 shadow-lg">
+            <h3 class="text-xl font-bold text-white mb-4">Recent Transactions</h3>
+            <div class="scroll-container overflow-x-auto">
+                <table class="min-w-full text-left text-gray-400 text-sm">
+                    <thead class="uppercase bg-gray-800 text-gray-400">
+                        <tr>
+                            <th class="px-6 py-3 rounded-tl-xl">Type</th>
+                            <th class="px-6 py-3">Asset</th>
+                            <th class="px-6 py-3">Amount</th>
+                            <th class="px-6 py-3 text-right">Value (USD)</th>
+                            <th class="px-6 py-3 text-right">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Example Transaction 1 -->
+                        <tr class="border-b border-gray-700 hover:bg-gray-800 transition-colors">
+                            <td class="px-6 py-4 font-semibold text-green-400">Deposit</td>
+                            <td class="px-6 py-4 font-semibold text-white">BTC</td>
+                            <td class="px-6 py-4 text-white">0.05 BTC</td>
+                            <td class="px-6 py-4 text-right text-white">$3,362.00</td>
+                            <td class="px-6 py-4 text-right text-gray-500">10/24/2025</td>
+                        </tr>
+                        <!-- Example Transaction 2 -->
+                        <tr class="border-b border-gray-700 hover:bg-gray-800 transition-colors">
+                            <td class="px-6 py-4 font-semibold text-blue-400">Trade</td>
+                            <td class="px-6 py-4 font-semibold text-white">ETH</td>
+                            <td class="px-6 py-4 text-white">1.2 ETH</td>
+                            <td class="px-6 py-4 text-right text-white">$4,000.00</td>
+                            <td class="px-6 py-4 text-right text-gray-500">10/23/2025</td>
+                        </tr>
+                        <!-- Example Transaction 3 -->
+                        <tr class="border-b border-gray-700 hover:bg-gray-800 transition-colors">
+                            <td class="px-6 py-4 font-semibold text-red-400">Withdrawal</td>
+                            <td class="px-6 py-4 font-semibold text-white">USD</td>
+                            <td class="px-6 py-4 text-white">$250.00</td>
+                            <td class="px-6 py-4 text-right text-white">$250.00</td>
+                            <td class="px-6 py-4 text-right text-gray-500">10/22/2025</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#0b0c10] py-12 px-6 md:px-12 text-center">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col items-center mb-4">
+                <div class="flex items-center space-x-2 mb-2">
+                    <svg class="h-8 w-8 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                    <span class="text-2xl font-bold text-white">CryptoFlow</span>
+                </div>
+                <p class="text-gray-400">The future of decentralized trading</p>
+            </div>
+            <div class="flex flex-wrap justify-center space-x-4 md:space-x-8 text-gray-500">
+                <a href="#" class="hover:text-white transition-colors">Terms</a>
+                <a href="#" class="hover:text-white transition-colors">Privacy</a>
+                <a href="#" class="hover:text-white transition-colors">Support</a>
+                <a href="#" class="hover:text-white transition-colors">API</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
