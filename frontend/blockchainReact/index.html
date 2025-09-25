@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CryptoFlow - Blockchain Trading Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      /* Custom CSS variables for blockchain theme */
+      :root {
+        --background: #0a0a0a;
+        --foreground: #f5f5f5;
+        --card: #1a1a1a;
+        --card-foreground: #f5f5f5;
+        --primary: #3b82f6;
+        --primary-foreground: #f5f5f5;
+        --secondary: #2a2a2a;
+        --secondary-foreground: #d4d4d4;
+        --muted: #262626;
+        --muted-foreground: #a3a3a3;
+        --accent: #1d4ed8;
+        --accent-foreground: #f5f5f5;
+        --destructive: #dc2626;
+        --destructive-foreground: #f5f5f5;
+        --success: #16a34a;
+        --success-foreground: #f5f5f5;
+        --border: #404040;
+        --input: #2a2a2a;
+        --ring: #3b82f6;
+      }
+
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: var(--background);
+        color: var(--foreground);
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Custom animations */
+      @keyframes glow {
+        0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
+        50% { box-shadow: 0 0 30px rgba(59, 130, 246, 0.6); }
+      }
+
+      @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+      }
+
+      @keyframes pulse-blue {
+        0%, 100% { background-color: rgba(59, 130, 246, 0.1); }
+        50% { background-color: rgba(59, 130, 246, 0.2); }
+      }
+
+      .animate-glow { animation: glow 2s ease-in-out infinite; }
+      .animate-float { animation: float 3s ease-in-out infinite; }
+      .animate-pulse-blue { animation: pulse-blue 2s ease-in-out infinite; }
+
+      .bg-gradient-primary {
+        background: linear-gradient(135deg, var(--primary), var(--accent));
+      }
+
+      .text-gradient {
+        background: linear-gradient(135deg, var(--primary), var(--accent));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .card {
+        background-color: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 1.5rem;
+      }
+
+      .btn {
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+      }
+
+      .btn-primary {
+        background-color: var(--primary);
+        color: var(--primary-foreground);
+      }
+
+      .btn-primary:hover {
+        background-color: #2563eb;
+        transform: scale(1.05);
+      }
+
+      .btn-success {
+        background-color: var(--success);
+        color: var(--success-foreground);
+      }
+
+      .btn-success:hover {
+        background-color: #15803d;
+        transform: scale(1.05);
+      }
+
+      .btn-destructive {
+        background-color: var(--destructive);
+        color: var(--destructive-foreground);
+      }
+
+      .btn-destructive:hover {
+        background-color: #b91c1c;
+        transform: scale(1.05);
+      }
+
+      .btn-outline {
+        background-color: transparent;
+        border: 1px solid var(--border);
+        color: var(--foreground);
+      }
+
+      .btn-outline:hover {
+        background-color: var(--muted);
+      }
+
+      .input {
+        background-color: var(--input);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 0.75rem;
+        color: var(--foreground);
+        width: 100%;
+      }
+
+      .input:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+      }
+
+      .select {
+        background-color: var(--input);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 0.75rem;
+        color: var(--foreground);
+        width: 100%;
+      }
+
+      .badge {
+        padding: 0.25rem 0.75rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        font-weight: 500;
+      }
+
+      .badge-success {
+        background-color: rgba(22, 163, 74, 0.2);
+        color: var(--success);
+      }
+
+      .badge-destructive {
+        background-color: rgba(220, 38, 38, 0.2);
+        color: var(--destructive);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel" src="app.js"></script>
+  </body>
+</html>
